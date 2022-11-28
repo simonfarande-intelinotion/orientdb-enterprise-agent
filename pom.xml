@@ -54,6 +54,16 @@
 
             </plugins>
         </pluginManagement>
+         <repository>
+  <id>orientb-test</id>
+  <url>https://pkgs.dev.azure.com/intelinotion/InteliNotion/_packaging/orientb-test/maven/v1</url>
+  <releases>
+    <enabled>true</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>
     </build>
     <repositories>
 
@@ -68,8 +78,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-    </repositories>
-    <repository>
+         <repository>
   <id>orientb-test</id>
   <url>https://pkgs.dev.azure.com/intelinotion/InteliNotion/_packaging/orientb-test/maven/v1</url>
   <releases>
@@ -79,4 +88,6 @@
     <enabled>true</enabled>
   </snapshots>
 </repository>
+    </repositories>
+   
 </project>
