@@ -10,13 +10,22 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+- task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+
+- task: AzureFileCopy@5
+  inputs:
+    SourcePath: '$(system.defaultworkingdirectory)'
+    azureSubscription: 'Developer Exploration (Pay-As-You-Go) (f9bfa8be-4707-4b15-9d86-6f2cac8bd7a5)'
+    Destination: 'AzureBlob'
+    storage: 'dryrun2sa'
+    ContainerName: 'orientdbwar'
+    BlobPrefix: 'warfile'
